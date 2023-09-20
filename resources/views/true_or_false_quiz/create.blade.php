@@ -17,11 +17,28 @@
               <x-text-input id="problem" class="block mt-1 w-full" type="text" name="problem" :value="old('problem')" required autofocus />
               <x-input-error :messages="$errors->get('problem')" class="mt-2" />
             </div>
+    <div class="flex flex-col mb-4">
+    <x-input-label for="Answer" :value="__('Answer')" />
+      <div class="mt-1 flex items-center space-x-2">
+        <label for="answer_true">
+            <input id="answer_true✖" type="radio" name="answer" value="1" {{ old('answer') == '1' ? 'checked' : '' }} required autofocus>
+            〇
+        </label>
+        <label for="answer_false">
+            <input id="answer_false" type="radio" name="answer" value="0" {{ old('answer') == '0' ? 'checked' : '' }} required autofocus>
+              ✖
+        </label>
+    </div>
+    <x-input-error :messages="$errors->get('answer')" class="mt-2" />
+</div>
+
+            {{--
             <div class="flex flex-col mb-4">
               <x-input-label for="Answer" :value="__('Answer')" />
               <x-text-input id="answer" class="block mt-1 w-full" type="boolean" name="answer" :value="old('description')" required autofocus />
               <x-input-error :messages="$errors->get('answer')" class="mt-2" />
             </div>
+            --}}
             <div class="flex items-center justify-end mt-4">
               <x-primary-button class="ml-3">
                 {{ __('Create') }}
