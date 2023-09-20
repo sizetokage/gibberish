@@ -19,11 +19,20 @@
           <div class="flex">
             <!-- 回答ページへのリンクボタン -->
             <div class="flex items-center justify-end mt-4">
-            <a href="route('TrueOrFalseQuiz.result',$true_or_false_quiz->id)"active = "request()->routeIs('true_or_false_quiz.result')" >
+            <form method = "GET" action = "{{ route('true_or_false_quiz.result', $true_or_false_quiz->id) }}" >
+              @csrf
+              @method('RESULT')
               <x-primary-button class="ml-3">
                 {{__('True')}}
               </x-primary-button>  
-            </a>
+            </form>
+            <form method = "GET" action = "{{ route('true_or_false_quiz.result', $true_or_false_quiz->id) }}" >
+              @csrf
+              @method('RESULT')
+              <x-primary-button class="ml-3">
+                {{__('False')}}
+              </x-primary-button>  
+            </form>
             </div>
             <!-- 削除ボタン -->
           </div>

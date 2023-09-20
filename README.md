@@ -11,4 +11,4 @@
 ## 未解決
 - answerをcreateする時のボタンの設計
 - solveでanswerを送信すること
-- result関数がうまく行っていない？
+- resultの条件分岐

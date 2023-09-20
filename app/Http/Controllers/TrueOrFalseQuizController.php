@@ -54,9 +54,7 @@ class TrueOrFalseQuizController extends Controller
         return response()->view('true_or_false_quiz.solve', compact('true_or_false_quiz'));
     }
 
-    public function result(string $id){
-        return view('true_or_false_quiz.correct', compact('true_or_false_quiz'));
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -80,5 +78,10 @@ class TrueOrFalseQuizController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function result(Request $id){
+        $true_or_false_quiz = TrueOrFalseQuiz::find($id);
+        return response()->view('true_or_false_quiz.correct', compact('true_or_false_quiz'));
     }
 }

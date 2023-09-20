@@ -1,1 +1,1 @@
-correct.blade.phpです
+正解です
