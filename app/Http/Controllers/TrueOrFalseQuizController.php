@@ -30,19 +30,19 @@ class TrueOrFalseQuizController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validato::make($request->all(),[
+        $validator = Validator::make($request->all(),[
             'problem' => 'required | max:191',
             'answer' => 'required',
         ]);
 
         if ($validator->fails()){
             return redirect()
-              ->route('true_or_false_quiz.create')
+              ->route('TrueOrFalseQuiz.create')
               ->withInput()
               ->withErrors($validator);
         }
         $result = TrueOrFalseQuiz::create($request->all());
-        return redirect()->route('true_or_false_quiz.index');
+        return redirect()->route('TrueOrFalseQuiz.index');
     }
 
     /**

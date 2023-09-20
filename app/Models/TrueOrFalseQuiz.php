@@ -16,6 +16,6 @@ class TrueOrFalseQuiz extends Model
     ];
 
     public static function getAllOrderByUpdated_at(){
-        return self::orderBy('updated_at', desc)->get();
+        return self::orderBy('updated_at', 'desc')->get();
     }
 }
