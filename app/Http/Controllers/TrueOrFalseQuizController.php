@@ -50,7 +50,12 @@ class TrueOrFalseQuizController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $true_or_false_quiz = TrueOrFalseQuiz::find($id);
+        return response()->view('true_or_false_quiz.solve', compact('true_or_false_quiz'));
+    }
+
+    public function result(string $id){
+        return view('true_or_false_quiz.correct', compact('true_or_false_quiz'));
     }
 
     /**

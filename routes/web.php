@@ -16,7 +16,7 @@ use App\Http\Controllers\TrueOrFalseQuizController;
 */
 
 Route::resource('TrueOrFalseQuiz', TrueOrFalseQuizController::class);
-
+Route::get('/true_or_false_quiz/result', [TrueOrFalseQuizController::class, 'result'])->name('true_or_false_quiz.result');
 Route::get('/', function () {
     return view('welcome');
 });

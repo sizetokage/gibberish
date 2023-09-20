@@ -21,7 +21,14 @@
                 <td class="py-4 px-6 border-b border-gray-light dark:border-gray-600">
                   <h3 class="text-left font-bold text-lg text-gray-dark dark:text-gray-200">{{$true_or_false_quiz->problem}}</h3>
                   <div class="flex">
-                    <!-- 更新ボタン -->
+                    <!-- 回答ページへのリンクボタン -->
+                    <div class="flex items-center justify-end mt-4">
+                    <a href="{{ route('TrueOrFalseQuiz.show',$true_or_false_quiz->id)}}">
+                      <x-primary-button class="ml-3">
+                        {{__('Challenge')}}
+                      </x-primary-button>  
+                    </a>
+                    </div>
                     <!-- 削除ボタン -->
                   </div>
                 </td>
