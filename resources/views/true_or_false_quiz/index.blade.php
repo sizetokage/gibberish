@@ -23,7 +23,7 @@
                   <div class="flex">
                     <!-- 回答ページへのリンクボタン -->
                     <div class="flex items-center justify-end mt-4">
-                    <a href="{{ route('TrueOrFalseQuiz.show',['id'=>$true_or_false_quiz->id])}}">
+                    <a href="{{ route('TrueOrFalseQuiz.show',[$true_or_false_quiz->id])}}">
                       <x-primary-button class="ml-3">
                         {{__('Challenge')}}
                       </x-primary-button>  

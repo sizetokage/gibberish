@@ -1,50 +1,38 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight dark:text-gray-200">
-      {{ __('True or False Quizの一覧') }}
+      {{ __('Quizに回答する') }}
     </h2>
   </x-slot>
 
   <div class="py-12">
-    <div class="max-w-7xl mx-auto sm:w-10/12 md:w-8/10 lg:w-8/12">
+    <div class="max-w-7xl mx-auto sm:w-8/12 md:w-1/2 lg:w-5/12">
       <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-6 bg-white dark:bg-gray-800 border-b border-grey-200 dark:border-gray-800">
-          <div class="flex flex-cl mb-4">
-            <p class="mb-2 uppercase font-bold text-lg text-gray-800 dark:text-gray-200">Problem</p>
-            <p class="py-2 px-3 text-gray-800 dark:text-gray-200" id="true_or_false_quiz">
-              {{ $true_or_false_quiz->problem }}
-            </p>
-          </div>
-          
-          <div class="flex">
-            <!-- 回答ページへのリンクボタン -->
-            <div class="flex items-center justify-end mt-4">
-            <form method = "GET" action = "{{ route('true_or_false_quiz.result', $true_or_false_quiz->id) }}" >
-              @csrf
-              @method('RESULT')
-              <x-primary-button class="ml-3">
-                {{__('True')}}
-              </x-primary-button>  
-            </form>
-            <form method = "GET" action = "{{ route('true_or_false_quiz.result', $true_or_false_quiz->id) }}" >
-              @csrf
-              @method('RESULT')
-              <x-primary-button class="ml-3">
-                {{__('False')}}
-              </x-primary-button>  
-            </form>
+        <div class="p-6 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-800 ">
+          {{$true_or_false_quiz->problem}}
+          @include('common.errors')
+          <form class="mb-6" action="{{ route('true_or_false_quiz.result') }}" method="GET">
+            @method('result')
+            @csrf
+            <input type = "hidden" name = "problem_id" value = "{{$true_or_false_quiz->id}}">
+            <div class="flex flex-col mb-4">
+              <x-input-label for="answer" :value="__('answer')" />
+                      <label for="answer_true">
+                          <input id="answer_true" type="radio" name="answer" value="1" {{ old('answer') == '1' ? 'checked' : '' }} required autofocus>
+                          〇
+                      </label>
+                      <label for="answer_false">
+                          <input id="answer_false" type="radio" name="answer" value="0" {{ old('answer') == '0' ? 'checked' : '' }} required autofocus>
+                            ✖
+                      </label>
             </div>
-            <!-- 削除ボタン -->
-          </div>
-
-          <div class="flex items-center justify-end mt-4">
-          <a href="{{ url()->previous() }}">
-            <x-secondary-button class="ml-3 ">
-              {{ __('Back') }}
-            </x-primary-button>
-          </a>
-          </div>
-        <div>
+            <div class="flex items-center justify-end mt-4">
+              <x-primary-button class="ml-3">
+                {{ __('回答する') }}
+              </x-primary-button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>

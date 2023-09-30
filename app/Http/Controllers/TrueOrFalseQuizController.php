@@ -80,8 +80,27 @@ class TrueOrFalseQuizController extends Controller
         //
     }
 
-    public function result(Request $id){
-        $true_or_false_quiz = TrueOrFalseQuiz::find($id);
-        return response()->view('true_or_false_quiz.correct', compact('true_or_false_quiz'));
+    public function result(Request $request){
+        $validator = Validator::make($request->all(),[
+            'problem_id'=>'required',
+            'answer' => 'required',
+        ]);
+        $problem_id = $request->problem_id;
+        $answer = $request->answer;
+        
+        if ($validator->fails()){
+            return redirect()
+              ->route('true_or_false_quiz.result')
+              ->withInput()
+              ->withErrors($validator);
+        }
+
+        $problem_answer = TrueOrFalseQuiz::find($problem_id)->answer;
+        if ($answer == $problem_answer){
+            return response()->view('true_or_false_quiz.correct');
+        }
+        else{
+            return response()->view('true_or_false_quiz.incorrect');
+        }
     }
 }

@@ -21,7 +21,7 @@
     <x-input-label for="Answer" :value="__('Answer')" />
       <div class="mt-1 flex items-center space-x-2">
         <label for="answer_true">
-            <input id="answer_true✖" type="radio" name="answer" value="1" {{ old('answer') == '1' ? 'checked' : '' }} required autofocus>
+            <input id="answer_true" type="radio" name="answer" value="1" {{ old('answer') == '1' ? 'checked' : '' }} required autofocus>
             〇
         </label>
         <label for="answer_false">
